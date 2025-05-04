@@ -1,105 +1,130 @@
 /* Main container */
-
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px;
+  padding: 10px 12px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: relative;
-  font-size: 20px;
-
-}
-
-/* Left section: logo (hamburger will only show on mobile) */
-.navbar-left {
-  display: none; /* Hide the navbar-left container on large screens */
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-right: 10px;
-}
-
-.navbar-right button {
-  background-color: white;
-  padding: 8px;
-  width: 80px;
-  cursor: pointer;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
-
-.navbar-right button:hover {
-  background-color: pink;
+  max-width: 100%;
 }
 
 /* Logo styling */
 .logo {
-  height: 25px;
+  height: 24px;
+  margin-right: 10px;
+  max-width: 130px;
 }
 
-/* Navigation menu */
+/* Left section - hamburger for mobile */
+.navbar-left {
+  display: none; /* Hide on desktop */
+}
+
+/* Navigation menu - desktop version */
 .navbar-menu {
   display: flex;
   align-items: center;
-  gap: 15px;
-}
-
-/* Styling for Link and a elements in navbar-menu */
-.navbar-menu a {
-  margin-left: 20px;
+  margin: 0 auto;
   list-style: none;
-  position: relative;
-  display: inline;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  text-decoration: none;
-  color: inherit;
+  gap: 15px;
+  padding: 0;
 }
 
-/* 🔥 Hover and active underline */
+.navbar-menu a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+/* Desktop underline effect */
 .navbar-menu a::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0;
-  height: 1.8px;
-  background: #1336ab;
-  transition: 0.4s;
+  width: 100%;
+  height: 2px;
+  background: #ff5722;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
 }
 
 .navbar-menu a:hover::after,
 .navbar-menu a.active::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
-/* 🔥 Text color on hover and active */
 .navbar-menu a:hover,
 .navbar-menu a.active {
-  color: black;
+  color: #ff5722;
 }
 
-/* Right side content */
-.navbar-search-icon,
+/* Right section with search, cart and sign-in */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
 .navbar-right img {
-  margin-left: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
+/* Search icon container */
+.navbar-search-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Notification dot */
+.navbar-search-icon .dot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 6px;
+  height: 6px;
+  background-color: #ff5722;
+  border-radius: 50%;
+}
+
+/* Sign in button */
 .navbar-right button {
-  margin-left: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-/* 🔽 Hamburger menu */
+.navbar-right button:hover {
+  background-color: #f5f5f5;
+  border-color: #ccc;
+}
+
+/* Hamburger menu */
 .hamburger {
   display: none;
   flex-direction: column;
+  gap: 4px;
   cursor: pointer;
-  gap: 3px;
-  padding: 0;
-  margin-right: 5px;
   z-index: 11;
 }
 
@@ -107,10 +132,10 @@
   width: 20px;
   height: 2px;
   background-color: #333;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
-/* 🔁 X icon transformation when open */
+/* Hamburger to X animation */
 .bar1.open {
   transform: rotate(45deg) translate(4px, 4px);
 }
@@ -123,48 +148,87 @@
   transform: rotate(-45deg) translate(4px, -4px);
 }
 
-/* 🔽 Responsive behavior */
+/* Mobile version - removes underline effects */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 8px;
+  }
+  
   .navbar-left {
-    display: flex; /* Show navbar-left on small screens */
+    display: flex;
     align-items: center;
   }
   
   .navbar-menu {
-    position: absolute;
-    top: 60px;
-    left: 5px;
-    width: 200px;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
     background: white;
     flex-direction: column;
+    align-items: flex-start;
     display: none;
-    padding: 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 10;
   }
 
   .navbar-menu.show {
     display: flex;
-    background-color: rgba(255, 255, 255, 0.9);  /* 0.9 is 90% opacity */
+  }
+  
+  .navbar-menu a {
+    margin: 8px 0;
+    font-size: 14px;
+    width: 100%;
+    padding-bottom: 0; /* Remove padding for mobile */
+  }
 
+  /* Remove underline effect completely on mobile */
+  .navbar-menu a::after {
+    display: none;
   }
 
   .hamburger {
-    display: flex; /* Show hamburger menu on small screens */
+    display: flex;
+  }
+  
+  .navbar-right {
+    gap: 8px;
+  }
+  
+  .navbar-right button {
+    padding: 4px 10px;
+    font-size: 11px;
   }
 }
 
-.navbar-search-icon {
-  position: relative;
-}
-
-.navbar-search-icon .dot {
-  position: absolute;
-  top: 0;
-  min-width: 10px;
-  min-height: 10px;
-  background-color: tomato;
-  border-radius: 5px;
-  top: -8px;
-  right: -8px;
+/* Extra small devices */
+@media (max-width: 375px) {
+  .navbar {
+    padding: 6px;
+  }
+  
+  .logo {
+    height: 20px;
+  }
+  
+  .navbar-right {
+    gap: 6px;
+  }
+  
+  .navbar-right img {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .navbar-right button {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+  
+  .hamburger .bar {
+    width: 16px;
+    height: 1.5px;
+  }
 }
