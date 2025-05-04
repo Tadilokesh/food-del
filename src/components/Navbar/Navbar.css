@@ -1,171 +1,168 @@
-.navbar{
-    padding: 20px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.navbar .logo{
-    width: 150px;
-}
-.navbar-menu{
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    color: #49557e;
-    font-size: 18px;
-}
-.navbar-right{
-    display: flex;
-    align-items: center;
-    gap: 40px;
+/* Main container */
 
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  font-size: 20px;
 }
-.navbar button{
-    background: transparent;
-    font-size: 16px;
-    color: #49557e;
-    border: 1px solid #49557e;
-    padding: 10px 30px;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s;
+
+/* Left section: logo (hamburger will only show on mobile) */
+.navbar-left {
+  display: none; /* Hide the navbar-left container on large screens */
 }
-.navbar button:hover{
-    background-color: #fff4f2;
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 10px;
 }
-.navbar .active{
-    padding-bottom: 2px;
-    border-bottom: 2px solid #49557e;
+
+.navbar-right button {
+  background-color: white;
+  padding: 8px;
+  width: 80px;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
 }
-.navbar li{
-    cursor: pointer;
+
+.navbar-right button:hover {
+  background-color: pink;
 }
-.navbar-search-icon{
-    position: relative;
+
+/* Logo styling */
+.logo {
+  height: 25px;
 }
-.navbar-search-icon .dot{
-    position:absolute;
-    min-width: 10px;
-    min-height: 10px;
-    background-color: tomato;
-    border-radius: 5px;
-    top: -8px;
-    right: -8px;
+
+/* Navigation menu */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
-@media(max-width:1050px){
-    .navbar .logo{
-        width: 140px;
-    }
-    .navbar-menu{
-        gap: 20px;
-        font-size: 17px;
-    }
-    .navbar-right img{
-        width: 22px;
-    }
-    .navbar-right button{
-        padding: 8px 25px;
-    }
+
+/* Styling for Link and a elements in navbar-menu */
+.navbar-menu a {
+  margin-left: 20px;
+  list-style: none;
+  position: relative;
+  display: inline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-decoration: none;
+  color: inherit;
 }
-@media(max-width:1050px){
-    .navbar .logo{
-        width: 140px;
-    }
-    .navbar-menu{
-        gap: 20px;
-        font-size: 17px;
-    }
-    .navbar-right img{
-        width: 22px;
-    }
-    .navbar-right button{
-        padding: 8px 25px;
-    }
+
+/* 🔥 Hover and active underline */
+.navbar-menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.8px;
+  background: #1336ab;
+  transition: 0.4s;
 }
-@media(max-width:1050px){
-    .navbar .logo{
-        width: 140px;
-    }
-    .navbar-menu{
-        gap: 20px;
-        font-size: 17px;
-    }
-    .navbar-right img{
-        width: 22px;
-    }
-    .navbar-right button{
-        padding: 8px 25px;
-    }
+
+.navbar-menu a:hover::after,
+.navbar-menu a.active::after {
+  width: 100%;
 }
-@media(max-width:1050px){
-    .navbar .logo{
-        width: 140px;
-    }
-    .navbar-menu{
-        gap: 20px;
-        font-size: 17px;
-    }
-    .navbar-right img{
-        width: 22px;
-    }
-    .navbar-right button{
-        padding: 8px 25px;
-    }
+
+/* 🔥 Text color on hover and active */
+.navbar-menu a:hover,
+.navbar-menu a.active {
+  color: black;
 }
-@media(max-width:1050px){
-    .navbar .logo{
-        width: 140px;
-    }
-    .navbar-menu{
-        gap: 20px;
-        font-size: 17px;
-    }
-    .navbar-right img{
-        width: 22px;
-    }
-    .navbar-right button{
-        padding: 8px 25px;
-    }
+
+/* Right side content */
+.navbar-search-icon,
+.navbar-right img {
+  margin-left: 20px;
 }
-@media(max-width:1050px){
-    .navbar .logo{
-        width: 140px;
-    }
-    .navbar-menu{
-        gap: 20px;
-        font-size: 17px;
-    }
-    .navbar-right{
-        gap:30px
-    }
-    .navbar-right img{
-        width: 22px;
-    }
-    .navbar-right button{
-        padding: 8px 25px;
-    }
+
+.navbar-right button {
+  margin-left: 10px;
 }
-@media(max-width:900px){
-    .navbar .logo{
-        width: 120px;
-    }
-    .navbar-menu{
-        gap: 15px;
-        font-size: 16px;
-    }
-    .navbar-right{
-        gap:20px
-    }
-    .navbar-right img{
-        width: 20px;
-    }
-    .navbar-right button{
-        padding: 7px 20px;
-        font-size: 15px;
-    }
+
+/* 🔽 Hamburger menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 3px;
+  padding: 0;
+  margin-right: 5px;
+  z-index: 11;
 }
-@media(max-width:750px){
-    .navbar-menu{
-        display: none;
-    }
+
+.hamburger .bar {
+  width: 20px;
+  height: 2px;
+  background-color: #333;
+  transition: 0.3s;
+}
+
+/* 🔁 X icon transformation when open */
+.bar1.open {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+.bar2.open {
+  opacity: 0;
+}
+
+.bar3.open {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* 🔽 Responsive behavior */
+@media (max-width: 768px) {
+  .navbar-left {
+    display: flex; /* Show navbar-left on small screens */
+    align-items: center;
+  }
+  
+  .navbar-menu {
+    position: absolute;
+    top: 60px;
+    left: 5px;
+    width: 200px;
+    background: white;
+    flex-direction: column;
+    display: none;
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  .navbar-menu.show {
+    display: flex;
+    background-color: inherit;
+  }
+
+  .hamburger {
+    display: flex; /* Show hamburger menu on small screens */
+  }
+}
+
+.navbar-search-icon {
+  position: relative;
+}
+
+.navbar-search-icon .dot {
+  position: absolute;
+  top: 0;
+  min-width: 10px;
+  min-height: 10px;
+  background-color: tomato;
+  border-radius: 5px;
+  top: -8px;
+  right: -8px;
 }
