@@ -4,9 +4,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
+  padding: 14px;
   position: relative;
   font-size: 20px;
+
 }
 
 /* Left section: logo (hamburger will only show on mobile) */
